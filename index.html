@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
 <title>Диспетчер</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +18,7 @@
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:500 15px/1.5 var(--sans);display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 15px/1.5 var(--sans);display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
 h1,h2,h3,p{margin:0}
 h1{font-size:clamp(32px,3.6vw,46px);font-weight:700;line-height:1.14;letter-spacing:-.02em}
 h2{font-size:clamp(24px,2.5vw,32px);font-weight:700;line-height:1.2;letter-spacing:-.015em}
@@ -33,11 +34,12 @@ a{color:var(--acc)}
 .tabs{display:flex;gap:4px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button{appearance:none;-webkit-appearance:none;background:none;border:0;font:600 14px/1 var(--sans);color:var(--muted);padding:9px 8px;border-radius:var(--r-s);cursor:pointer;white-space:nowrap}
-.tabs button:hover{color:var(--ink);background:var(--bg)}
+@media (hover:hover){.tabs button:hover{color:var(--ink);background:var(--bg)}}
 .tabs button.on{color:var(--acc);background:var(--soft)}
 
 /* страницы */
-main{flex:1;min-height:0;overflow:auto;overflow-x:hidden;position:relative}
+main{flex:1;min-height:0;overflow:auto;overflow-x:hidden;position:relative;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+button,a,input{touch-action:manipulation}
 .page{display:none;min-height:100%;align-items:flex-start;padding:var(--pt) 0}
 .page.on{display:flex}
 .page.on.fwd{animation:inF .34s cubic-bezier(.22,.7,.3,1)}
@@ -53,17 +55,17 @@ main{flex:1;min-height:0;overflow:auto;overflow-x:hidden;position:relative}
 .btn{transition:background .2s,border-color .2s,transform .2s}
 .btn:active{transform:translateY(1px)}
 .c,.fact{transition:border-color .2s,box-shadow .2s}
-.c:hover,.fact:hover{border-color:var(--tan);box-shadow:0 4px 14px rgba(30,20,20,.05)}
+@media (hover:hover){.c:hover,.fact:hover{border-color:var(--tan);box-shadow:0 4px 14px rgba(30,20,20,.05)}}
 @media (prefers-reduced-motion:reduce){.page.on.fwd,.page.on.back,.page.out,.sub-page.on{animation:none}.page.out{display:none}}
 
 /* низ */
-.pager{flex:none;background:var(--card);border-top:1px solid var(--line)}
+.pager{flex:none;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
 .pager .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:14px}
 .pager span{color:var(--muted);font-size:13px;text-align:center}
 .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--acc);color:var(--card);font:700 15px/1 var(--sans);text-decoration:none;height:42px;padding:0 20px;border-radius:var(--r-s);border:1px solid var(--acc);cursor:pointer;white-space:nowrap}
-.btn:hover{background:var(--acc-dark);border-color:var(--acc-dark)}
+@media (hover:hover){.btn:hover{background:var(--acc-dark);border-color:var(--acc-dark)}}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn.ghost:hover{background:var(--bg);border-color:var(--line)}
+@media (hover:hover){.btn.ghost:hover{background:var(--bg);border-color:var(--line)}}
 .btn[disabled]{visibility:hidden}
 .btn:focus-visible,input:focus-visible,.tabs button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 
@@ -149,7 +151,7 @@ dialog.wide{width:860px;max-height:calc(100dvh - 48px);overflow:auto}
 .dh{display:flex;align-items:center;justify-content:space-between}
 .dh h3{font-size:18px}
 .x{appearance:none;-webkit-appearance:none;background:none;border:0;font:500 26px/1 var(--sans);color:var(--muted);cursor:pointer;padding:2px 6px}
-.x:hover{color:var(--ink)}
+@media (hover:hover){.x:hover{color:var(--ink)}}
 dialog::backdrop{background:rgba(20,15,15,.35)}
 dialog label{display:block;font-size:13px;font-weight:600;margin-top:10px}
 dialog input{width:100%;margin-top:4px;padding:9px 11px;font:500 15px var(--sans);border:1px solid var(--tan);border-radius:var(--r-s)}
@@ -158,7 +160,7 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
 
 .big{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:var(--mt)}
 .sq{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:var(--pad);transition:border-color .2s,box-shadow .2s}
-.sq:hover{border-color:var(--tan);box-shadow:0 4px 14px rgba(30,20,20,.05)}
+@media (hover:hover){.sq:hover{border-color:var(--tan);box-shadow:0 4px 14px rgba(30,20,20,.05)}}
 .sq svg{display:block;width:100%;height:auto;font-family:var(--sans)}
 .sq b{display:block;font-size:17px;line-height:1.25;margin-top:12px}
 .sq span{display:block;color:var(--muted);font-size:14px;line-height:1.35;margin-top:4px}
@@ -181,6 +183,7 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
 .tiles{display:grid;grid-auto-rows:1fr;gap:var(--gap);margin-top:var(--mt)}
 .mech .h2b{margin-top:24px}
 .tiles.five{grid-template-columns:repeat(5,1fr)}.tiles.four{grid-template-columns:repeat(4,1fr)}.tiles.three{grid-template-columns:repeat(3,1fr)}
+.t,.sq,.c,.pg>*{min-width:0}
 .t{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:var(--pad)}
 .t b{display:block;font-size:17px;line-height:1.25}.t span{display:block;color:var(--muted);font-size:14px;line-height:1.35;margin-top:4px}
 .info{display:grid;gap:var(--gap);margin-top:var(--mt)}
@@ -236,26 +239,37 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
 @media (max-width:860px){
   .pg{grid-template-columns:1fr}
   .big{grid-template-columns:1fr}
-  .tiles.five,.tiles.four,.tiles.three{grid-template-columns:1fr 1fr}.sts{grid-template-columns:1fr 1fr}.st.w{grid-column:span 1}
+  .tiles{grid-auto-rows:auto}
+  .tiles.five,.tiles.four{grid-template-columns:1fr 1fr}.tiles.three{grid-template-columns:1fr}
+  .tiles.five .t:last-child{grid-column:1/-1}
+  .t b{font-size:16px}
   .top{position:relative}.contact{position:absolute;right:16px;top:8px;height:32px;padding:0 12px;font-size:13px}
-  .lane{grid-template-columns:1fr}.sts{grid-template-columns:1fr 1fr;gap:12px}.st::after{display:none}
-  :root{--gap:12px;--pt:16px}
+  .lane{grid-template-columns:1fr}.sts{grid-template-columns:1fr;gap:8px}.st.w{grid-column:auto}.st::after{display:none}
+  .m1{flex-wrap:wrap}.m4{flex-wrap:wrap;gap:5px}.m4 span{padding:3px 6px;white-space:nowrap}.m4 small{margin:0 2px;white-space:nowrap}
+  .m6{flex-wrap:wrap;gap:6px 12px}.m6 span,.m6 u{white-space:nowrap}
+  :root{--gap:12px;--pt:16px;--pad:14px}
   .wrap{padding:0 16px}
   .top .wrap{height:auto;flex-direction:column;align-items:stretch;gap:6px;padding-top:9px;padding-bottom:7px}
   .tabs{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .tabs::-webkit-scrollbar{display:none}
   .home,.calc,.plans,.src{grid-template-columns:1fr}
-  .home{gap:22px}.facts{grid-template-columns:1fr 1fr}
+  .home{gap:22px}.home .sub{font-size:17px}.facts{grid-template-columns:1fr 1fr}.fact b{font-size:20px;white-space:nowrap}.fact span{font-size:13px}
   .inputs{grid-template-columns:1fr 1fr}
   .tbl{border:0;background:none}
   .tbl thead{display:none}
   .tbl,.tbl tbody,.tbl tr,.tbl th,.tbl td{display:block;width:100%}
   .tbl tr{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
-  .tbl tbody th{border:0;padding:9px 12px 4px;width:100%}
-  .tbl td{border:0;padding:5px 12px}
+  .tbl tbody th{border:0;padding:12px 14px 4px;width:100%}
+  .tbl td{border:0;padding:5px 14px}
+  .tbl td:last-child{padding-bottom:12px}
   .tbl td::before{content:attr(data-h);display:block;font-size:12px;color:var(--muted)}
-  .pager .wrap{height:56px}
+  .pager .wrap{height:56px}.pager span{display:none}
   .btn{padding:0 16px;font-size:14px}
+}
+@media (max-width:360px){
+  :root{--pad:12px}
+  .fact b{font-size:18px}.fact span{font-size:12px}
+  .t b{font-size:15px}.t span{font-size:13px}
 }
 </style>
 </head>
@@ -316,7 +330,7 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
           <input id="hours" type="number" min="1" max="24" value="14" inputmode="numeric"></label>
         <label>Операторов на смене
           <input id="seats" type="number" min="1" max="20" value="1" inputmode="numeric"></label>
-        <label>Всего операторов в штате
+        <label>Всего в штате
           <input id="staff" type="number" min="1" max="50" step="1" inputmode="numeric"></label>
         <label>Зарплата на руки, ₽
           <input id="salary" type="number" min="20000" max="300000" step="1000" value="45000" inputmode="numeric"></label>
@@ -561,7 +575,10 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
       $(id).classList.toggle('on', n === cur);
       tabs[n].classList.toggle('on', n === cur);
     });
-    if (tabs[cur].scrollIntoView && window.innerWidth <= 860) tabs[cur].scrollIntoView({block: 'nearest', inline: 'center'});
+    if (window.innerWidth <= 860) {
+      var bar = tabs[cur].parentNode, r = tabs[cur].getBoundingClientRect(), br = bar.getBoundingClientRect();
+      bar.scrollLeft += r.left - br.left - (br.width - r.width) / 2;
+    }
     $('main').scrollTop = 0;
     $('prev').disabled = cur === 0;
     $('next').disabled = cur === ids.length - 1;
