@@ -12,7 +12,7 @@
 :root{
   color-scheme:light;
   --bg:#faf9f8; --card:#fff; --ink:#1c1b1b; --muted:#6b6766; --line:#e8e4e2;
-  --acc:#dd2314; --acc-dark:#b81c10; --soft:#fcecea; --tan:#c9c4c0;
+  --green:#e9f5de; --green-l:#cfe5bb; --green-d:#47752f; --acc:#dd2314; --acc-dark:#b81c10; --soft:#fcecea; --tan:#c9c4c0;
   --r:12px; --r-s:8px; --pad:16px 18px; --gap:16px; --mt:20px; --pt:32px;
   --sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
 }
@@ -271,6 +271,56 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   .pics .sq svg{flex:0 0 54%;width:54%;max-width:230px}
   .pics .sq>div{min-width:0}
   .pics .sq b{margin:0;font-size:16px}.pics .sq span{font-size:13px}
+  .pics .sq i{display:block;font-style:normal;font-size:13px;font-weight:600;color:var(--acc);margin-top:4px}
+  .pics .sq[role=button]{cursor:pointer}
+  .ms[data-m=panel] .in{display:flex;flex-direction:column;height:100%}
+  .demo{display:flex;flex-direction:column;flex:1;min-height:0;max-height:460px;margin-top:12px;background:#141416;color:#ededeb;border-radius:var(--r);padding:10px 12px;font-size:13px;line-height:1.3}
+  .d-top{flex:none;display:flex;justify-content:space-between;gap:10px;color:#9a9a97;font-size:12px}
+  .d-on{display:flex;align-items:center;gap:6px;color:#ededeb;font-weight:600}
+  .d-on i{width:8px;height:8px;border-radius:50%;background:#4cc38a;animation:dOn 1.6s ease infinite}
+  @keyframes dOn{50%{opacity:.35}}
+  .d-tabs{flex:none;display:flex;gap:3px;background:#232326;border-radius:8px;padding:3px;margin-top:8px}
+  .d-tabs button{flex:1;appearance:none;-webkit-appearance:none;border:0;background:none;color:#9a9a97;font:600 13px/1 var(--sans);height:30px;border-radius:6px;cursor:pointer}
+  .d-tabs button.on{background:#ededeb;color:#141416}
+  .d-v{position:relative;flex:1;min-height:0;overflow-y:auto;margin-top:8px;overscroll-behavior:contain}
+  .d-v.det>*{flex-shrink:0}.d-v.det>.d-tx{flex-shrink:1}
+  .d-c{display:block;width:100%;appearance:none;-webkit-appearance:none;border:0;text-align:left;font:inherit;color:inherit;background:#1f1f22;border-radius:8px;padding:9px 10px;margin-bottom:6px;cursor:pointer}
+  .d-c .m2{margin-top:5px}.d-c .m3{margin-top:6px}
+  .d-back{appearance:none;-webkit-appearance:none;border:0;background:none;color:#79b4ee;font:600 13px/1 var(--sans);padding:2px 0 8px;cursor:pointer}
+  .d-p{display:flex;align-items:center;gap:5px;margin-top:8px}
+  .d-p button{appearance:none;-webkit-appearance:none;border:1px solid #34343a;background:none;color:#ededeb;font:600 12px/1 var(--sans);min-width:34px;height:30px;padding:0 6px;border-radius:6px;cursor:pointer}
+  .d-p button.pl{background:#256b43;border-color:#256b43;min-width:42px;font-size:14px}
+  .d-p button.on{background:#ededeb;color:#141416;border-color:#ededeb}
+  .d-p small{margin-left:auto;color:#9a9a97;font-size:12px;white-space:nowrap}
+  .d-p .sp{min-width:30px}
+  .d-tl{position:relative;height:24px;background:#222225;border-radius:5px;margin-top:8px;cursor:pointer}
+  .d-tl i{position:absolute;top:6px;bottom:6px;width:2px;background:#6fb7f0}
+  .d-tl b{position:absolute;top:0;bottom:0;width:2px;background:#fff}
+  .d-v.det{display:flex;flex-direction:column;overflow:hidden}
+  .d-tx{position:relative;flex:1;min-height:0;overflow-y:auto;margin-top:8px;overscroll-behavior:contain}
+  .d-l{margin:0 0 5px;padding:6px 8px;border-radius:6px;background:#1f1f22;color:#77776f;transition:color .2s}
+  .ms .d-l{font-size:13px;line-height:1.3;margin-top:0;color:#77776f}
+  .ms .d-l b{display:block;font-size:11px;font-weight:600;opacity:.75}
+  .ms .d-l.on{color:#ededeb}.d-l.me{margin-left:14px;background:#2a2020}
+  .d-dl{display:block;appearance:none;-webkit-appearance:none;border:0;background:none;color:#79b4ee;font:600 13px/1 var(--sans);padding:4px 0;cursor:pointer}
+  .d-e{color:#9a9a97;padding:6px 2px}
+  .cal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:10px}
+  .cal b{grid-column:1/-1;font-size:15px;margin:0 4px 4px}
+  .cal span{text-align:center;font-size:12px;font-weight:600;color:var(--muted)}
+  .cal button{appearance:none;-webkit-appearance:none;border:0;background:none;color:var(--ink);font:600 14px/1 var(--sans);height:34px;border-radius:50%;cursor:pointer;padding:0}
+  .cal button.on{background:var(--acc);color:#fff}
+  .slots{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .chip{appearance:none;-webkit-appearance:none;border:1px solid var(--tan);background:var(--card);color:var(--ink);font:600 14px/1 var(--sans);height:36px;padding:0 12px;border-radius:999px;cursor:pointer}
+  .chip.on{background:var(--acc);border-color:var(--acc);color:#fff}
+  .ms p.res{background:var(--soft);color:var(--ink);font-size:16px;font-weight:700;border-radius:var(--r-s);padding:10px 12px;margin-top:10px}
+  #tPlan,#pCard{margin-top:12px;padding:8px}
+  #tPlan g.fr,#tPlan g.me,#tPlan g.bz{cursor:pointer}
+  #tPlan .pin{transition:transform .25s ease}
+  .ms .rows+.btn{margin-top:12px}
+  #pAgain[hidden]{display:none}
+  #pCard .yes,#pCard .ask{cursor:pointer}
+  #pCard .yes rect{animation:dYes 1.2s ease infinite;transform-origin:245px 187px}
+  @keyframes dYes{50%{transform:scale(1.14)}}
   .ck{list-style:none;padding:0;margin:16px 0 0}
   .ck li{display:flex;align-items:center;gap:14px;font-size:18px;font-weight:600;line-height:1.3;padding:13px 0;border-top:1px solid var(--line)}
   .ck li:last-child{border-bottom:1px solid var(--line)}
@@ -292,9 +342,9 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   .fl[role=button]{cursor:pointer}
   .fl b{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:15px;margin:0 4px 10px}.fl.d b{color:var(--acc)}
   .fl b i{font-style:normal;font-size:13px;font-weight:600;color:var(--acc);white-space:nowrap}
-  .fl.int{background:var(--ink);border-color:var(--ink);color:#fff}
-  .fl.int b{margin-bottom:2px}.fl.int b i{color:#fff}
-  .fl.int span{display:block;margin:0 4px;font-size:14px;color:#cfcac7}
+  .fl.int{background:var(--green);border-color:var(--green-l)}
+  .fl.int b{margin-bottom:2px}.fl.int b i{color:var(--green-d)}
+  .fl.int span{display:block;margin:0 4px;font-size:14px;color:var(--muted)}
   .fl ol{list-style:none;margin:0;padding:0;display:flex;align-items:flex-start}
   .fl li{flex:1;position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:12px;font-weight:600;line-height:1.2}
   .fl li+li::before{content:"→";position:absolute;left:-6px;top:10px;color:var(--tan);font-size:16px}
@@ -332,7 +382,11 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   .mf{margin-top:12px}.mf input{padding:8px 10px;font-size:18px}
   .ms .rows{margin-top:8px}.ms .row{font-size:14px;padding:2px 0}
   .fl{padding:9px 8px;margin-top:8px}.fl b{margin-bottom:6px;font-size:14px}.fl .ic{width:34px;height:34px}.fl .ic svg{width:18px;height:18px}.fl li{font-size:11px}
-  .ms .mock{margin-top:10px;font-size:12px}
+  .demo{margin-top:8px;padding:8px 10px}
+  .d-tabs{margin-top:6px}.d-tabs button{height:27px}.d-v{margin-top:6px}
+  .ms[data-m=panel] h2{font-size:22px}.ms[data-m=panel] .tiny{margin-top:6px}
+  .cal{margin-top:8px;padding:6px;gap:1px}.cal button{height:28px;font-size:13px}.slots{margin-top:7px}.chip{height:31px;padding:0 10px;font-size:13px}.ms p.res{font-size:14px;padding:7px 10px;margin-top:7px}
+  #tPlan,#pCard{margin-top:8px;padding:4px}#tPlan svg,#pCard svg{width:auto;height:190px;margin:0 auto}
   .pr2{margin-top:10px}.pr2 .num{font-size:28px}
   .pics{margin-top:10px;gap:8px}.pics .sq{padding:6px 8px;gap:10px}.pics .sq svg{flex-basis:44%;width:44%}.pics .sq b{font-size:15px}.pics .sq span{font-size:13px}
   .fl.int span{font-size:13px}
@@ -383,7 +437,7 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   </div>
   <div class="facts">
     <div class="fact"><b>1 разговор</b><span>одновременно на одном номере, больше - другой тариф</span></div>
-    <div class="fact"><b>2-3 секунды</b><span>в среднем пауза перед ответом, гостю почти незаметно</span></div>
+    <div class="fact"><b>2-3 секунды</b><span>в среднем пауза перед ответом, скорость как у нейросети</span></div>
     <div class="fact"><b>15 990 ₽</b><span>подписка в месяц, без платы за подключение</span></div>
     <div class="fact"><b>0,89 ₽</b><span>минута разговора, отдельно от подписки</span></div>
   </div>
@@ -435,7 +489,7 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   <p class="lead">Диспетчер - не нейросеть. Бот на нейросети придумывает ответы сам, а Диспетчер собирает их строго из данных вашего заведения. Это называется детерминированная логика.</p>
   <div class="tiles three"><div class="t"><b>Не выдумывает</b><span>Только ваше меню и цены</span></div><div class="t"><b>Не понял - переспросит</b><span>Догадку кладёт в заказ только после «да»</span></div><div class="t"><b>Не отдаёт данные</b><span>Меню и заказы не идут в ChatGPT и другие ИИ</span></div></div>
   <h2 class="h2b">Где оператор пока лучше</h2>
-  <div class="tiles three"><div class="t"><b>Пауза 2-3 секунды</b><span>Перед ответом, гостю почти незаметно</span></div><div class="t"><b>Шум и акцент</b><span>Слышит хуже, переспрашивает</span></div><div class="t"><b>Только телефон</b><span>Чата и сайта нет</span></div></div>
+  <div class="tiles three"><div class="t"><b>Пауза 2-3 секунды</b><span>Перед ответом, скорость как у нейросети</span></div><div class="t"><b>Шум и акцент</b><span>Слышит хуже, иногда переспрашивает</span></div><div class="t"><b>Только телефон</b><span>Чата нет, сайт и приложение уже у вас</span></div></div>
 </div></section>
 
 <section class="page" id="compare"><div class="wrap">
@@ -455,8 +509,8 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
         <tr><th>Звонков одновременно</th><td class="ours" data-h="Диспетчер">Один, больше - другой тариф</td><td data-h="Оператор">Один, остальные ждут или вешают трубку</td><td data-h="Бот">Заявляют до 100</td></tr>
         <tr><th>Что слышит гость</th><td class="ours" data-h="Диспетчер">Ответы собраны строго по вашему заведению</td><td data-h="Оператор">Зависит от человека и настроения</td><td data-h="Бот">Нейросеть сочиняет сама</td></tr>
         <tr><th>Меню и стоп-лист</th><td class="ours" data-h="Диспетчер">Ваше меню, стоп-лист обновляется сразу или раз в 15 минут</td><td data-h="Оператор">Помнит, новичка надо учить</td><td data-h="Бот"><span class="na">Не указано</span></td></tr>
-        <tr><th>Данные гостей</th><td class="ours" data-h="Диспетчер">В нейросети не идут, голос через Яндекс</td><td data-h="Оператор">Остаются у ресторана</td><td data-h="Бот">Заявляют 152-ФЗ, часть работает на ChatGPT</td></tr>
-        <tr><th>Пауза перед ответом</th><td class="ours" data-h="Диспетчер">В среднем 2-3 секунды, гостю почти незаметно</td><td data-h="Оператор">Отвечает сразу</td><td data-h="Бот"><span class="na">Не указано</span></td></tr>
+        <tr><th>Данные гостей</th><td class="ours" data-h="Диспетчер">В нейросети не идут</td><td data-h="Оператор">Остаются у ресторана</td><td data-h="Бот">Заявляют 152-ФЗ, часть работает на ChatGPT</td></tr>
+        <tr><th>Пауза перед ответом</th><td class="ours" data-h="Диспетчер">В среднем 2-3 секунды, как у нейросети</td><td data-h="Оператор">Отвечает сразу</td><td data-h="Бот"><span class="na">Не указано</span></td></tr>
         <tr><th>Если что-то сломалось</th><td class="ours" data-h="Диспетчер">Заказ не теряется, всё в веб-панели</td><td data-h="Оператор">Некому выйти на смену, за год увольняются 30-45&nbsp;%</td><td data-h="Бот"><span class="na">Не указано</span></td></tr>
         <tr><th>Срок запуска</th><td class="ours" data-h="Диспетчер">1 месяц</td><td data-h="Оператор">Найм и обучение</td><td data-h="Бот">От следующего дня после оплаты</td></tr>
       </tbody>
@@ -466,7 +520,7 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
     <table class="tbl">
       <thead><tr><th>Кто</th><th>Цена</th><th>На чём работает</th><th>Касса</th><th>Данные гостей</th></tr></thead>
       <tbody>
-        <tr class="ours"><th>Диспетчер</th><td data-h="Цена">15&nbsp;990&nbsp;₽ в месяц<br>0,89&nbsp;₽/мин</td><td data-h="На чём работает">Не нейросеть, детерминированная логика</td><td data-h="Касса">UMA и iiko</td><td data-h="Данные гостей">В нейросети не идут, голос через Яндекс</td></tr>
+        <tr class="ours"><th>Диспетчер</th><td data-h="Цена">15&nbsp;990&nbsp;₽ в месяц<br>0,89&nbsp;₽/мин</td><td data-h="На чём работает">Не нейросеть, детерминированная логика</td><td data-h="Касса">UMA и iiko</td><td data-h="Данные гостей">В нейросети не идут</td></tr>
         <tr><th>Tomoru</th><td data-h="Цена">4,4-6,4&nbsp;₽/мин<br>от 1&nbsp;600 минут</td><td data-h="На чём работает">Своя нейросеть</td><td data-h="Касса"><span class="na">Не указано</span></td><td data-h="Данные гостей">152-ФЗ, Россия</td></tr>
         <tr><th>Звонобот</th><td data-h="Цена">7&nbsp;₽/мин<br>запуск 200&nbsp;000&nbsp;₽</td><td data-h="На чём работает">Нейросеть</td><td data-h="Касса">Битрикс24 и 1С, касса не указана</td><td data-h="Данные гостей">152-ФЗ</td></tr>
         <tr><th>Robovoice</th><td data-h="Цена">11&nbsp;800&nbsp;₽<br>за 2&nbsp;000 минут</td><td data-h="На чём работает">Сценарии и нейросеть</td><td data-h="Касса"><span class="na">Не указано</span></td><td data-h="Данные гостей">152-ФЗ, Россия или свой сервер</td></tr>
@@ -523,7 +577,7 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   <h2>Подписка и минуты</h2>
   <div class="plans">
     <div class="c plan main"><small>Подписка</small><div class="price">15 990 ₽</div><p>В месяц за ресторан. Один номер, одно меню, один стоп-лист, одна зона доставки, один разговор одновременно. Больше - другой тариф, цена по запросу. На 2 года 14 871 ₽ в месяц. Каждый следующий ресторан 15 990 ₽, с 3-го скидка 10 %.</p></div>
-    <div class="c plan"><small>Минута разговора</small><div class="price">0,89 ₽</div><p>Вы платите Яндексу напрямую: он распознаёт речь гостя и озвучивает ответ. Кабинет в Яндексе откроем на ваш ресторан. 40 звонков в день по 5 минут - около 5 410 ₽ в месяц.</p></div>
+    <div class="c plan"><small>Минута разговора</small><div class="price">0,89 ₽</div><p>Вы платите напрямую сервису распознавания: он слышит гостя и озвучивает ответ. Сервис подбираем при подключении, кабинет откроем на ваш ресторан. 40 звонков в день по 5 минут - около 5 410 ₽ в месяц.</p></div>
     <div class="c plan"><small>Несколько точек, один номер</small><div class="price">+3 990 ₽</div><p>За каждую точку со своей зоной и стоп-листом. 5 точек на одном номере: 31 950 ₽ в месяц.</p><span class="tag">условие обсуждается</span></div>
   </div>
   <div class="tiles four"><div class="t"><b>Без платы за подключение</b><span>Только абонентка</span></div><div class="t"><b>От 1 года</b><span>Минимальный срок подписки</span></div><div class="t"><b>Скидка 7 %</b><span>При подписке на 2 года</span></div><div class="t"><b>1 месяц</b><span>Срок запуска</span></div></div>
@@ -578,43 +632,40 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
     <h2>Где оператор <em>пока лучше</em></h2>
     <p>Говорим честно.</p>
     <ul class="ck gray">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Пауза 2-3 секунды перед ответом<small>Гостю почти незаметно</small></span></li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Шум и акцент слышит хуже<small>Переспрашивает</small></span></li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Только телефон<small>Чата и сайта нет</small></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Пауза 2-3 секунды перед ответом<small>Скорость как у нейросети</small></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Шум и акцент слышит хуже<small>Иногда переспрашивает</small></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Только телефон<small>Чата нет. Сайт и приложение у вас уже есть, Диспетчер добавляет телефон</small></span></li>
     </ul>
     <p class="tiny">Полное сравнение с оператором и голосовыми ботами - в версии для компьютера.</p>
   </div></div>
   <div class="ms" data-m="panel"><div class="in">
     <h2>Каждый звонок <em>под контролем</em></h2>
     <p>Гость спорит? Откройте звонок и послушайте.</p>
-    <div class="mock" aria-label="Пример карточки заказа">
-      <div class="m1"><b>18:40</b><span>разговор 4:52</span><em>доставка</em><strong>1&nbsp;780&nbsp;₽</strong></div>
-      <div class="m2">Гость · +7 9** ***-**-** · ул. Примерная, 1</div>
-      <div class="m3"><span>Филадельфия классик × 2</span><span>Приборы × 2</span></div>
-      <div class="m4"><span>-10 с</span><span class="pl">▶</span><span>+10 с</span><small>0:00 / 4:52</small><span class="sp">1×</span><span class="sp">1,5×</span><span class="sp">2×</span></div>
-      <div class="m5"><i style="left:2%"></i><i style="left:7%"></i><i style="left:12%"></i><i style="left:15%"></i><i style="left:18%"></i><i style="left:23%"></i><i style="left:26%"></i><i style="left:31%"></i><i style="left:34%"></i><i style="left:37%"></i><i style="left:39%"></i><i style="left:44%"></i><i style="left:47%"></i><i style="left:50%"></i><i style="left:53%"></i><i style="left:61%"></i><i style="left:63%"></i><i style="left:67%"></i><i style="left:70%"></i><i style="left:73%"></i><i style="left:78%"></i><i style="left:81%"></i><i style="left:83%"></i><i style="left:89%"></i><i style="left:92%"></i><i style="left:93%"></i><i style="left:99%"></i><i class="r" style="left:57%"></i></div>
-      <div class="m6"><span>фраза гостя</span><span class="r">тишина дольше 8 с</span><u>транскрипт</u><u>открыть звонок →</u></div>
+    <div class="demo" id="mDemo">
+      <div class="d-top"><span class="d-on"><i></i>Диспетчер онлайн</span><span id="dLine">Линия свободна</span></div>
+      <div class="d-tabs"><button type="button" data-d="tab:live">Live</button><button type="button" class="on" data-d="tab:calls">Звонки</button><button type="button" data-d="tab:orders">Заказы</button></div>
+      <div class="d-v" id="dView"></div>
     </div>
-    <p class="tiny"><a href="#" data-i="panel">Что есть в панели</a>: онлайн, запись, заказы, текст.</p>
+    <p class="tiny">Понажимайте, всё работает. <a href="#" data-i="panel">Что есть в панели</a></p>
   </div></div>
   <div class="ms" data-m="more"><div class="in">
     <h2>Бронь, дата <em>и баллы</em></h2>
     <div class="pics" id="mPics">
-      <div class="sq"><div><b>Бронь столиков</b><span>Записывает в любое время</span></div></div>
-      <div class="sq"><div><b>Заказ к дате и времени</b><span>Примет заранее, к нужному часу</span></div></div>
-      <div class="sq"><div><b>Баллы гостя</b><span>Назовёт баланс и спишет при заказе</span></div></div>
+      <div class="sq" role="button" tabindex="0" data-i="table"><div><b>Бронь столиков</b><span>Записывает в любое время</span><i>Попробовать ›</i></div></div>
+      <div class="sq" role="button" tabindex="0" data-i="date"><div><b>Заказ к дате и времени</b><span>Примет заранее, к нужному часу</span><i>Попробовать ›</i></div></div>
+      <div class="sq" role="button" tabindex="0" data-i="pts"><div><b>Баллы гостя</b><span>Назовёт баланс и спишет при заказе</span><i>Попробовать ›</i></div></div>
     </div>
   </div></div>
   <div class="ms" data-m="tariff"><div class="in">
     <span class="lab">Подписка за ресторан</span>
     <div class="pr"><strong class="num ink">15 990 ₽</strong><span>в месяц</span></div>
-    <div class="pr pr2"><strong class="num">0,89 ₽</strong><span>минута разговора, Яндексу напрямую</span></div>
+    <div class="pr pr2"><strong class="num">0,89 ₽</strong><span>минута разговора, напрямую сервису распознавания</span></div>
     <ul class="ck">
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Без платы за подключение</span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>От 1 года<small><a href="#" data-i="terms">Узнать больше</a>: скидка, точки, рестораны</small></span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Запуск за 1 месяц<small><a href="#" data-i="start">Как проходит запуск</a></small></span></li>
     </ul>
-    <p class="tiny">Один разговор одновременно, больше - другой тариф.</p>
+    <p class="tiny">Один разговор одновременно, больше - другой тариф. Сервис распознавания подбираем при подключении.</p>
   </div></div>
   <div class="ms" data-m="contact"><div class="in">
     <h2>Запуск <em>за 1 месяц</em></h2>
@@ -644,7 +695,7 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
       <li>Зарплата 45 000 ₽ на руки, обычно 39 000-50 000 ₽: <a href="https://dreamjob.ru/salary/operator-goryachey-linii">dreamjob.ru</a>, 2026, 21 отзыв. По Петрозаводску данных не нашли.</li>
       <li>Стоимость оператора, за год уходит 30-45&nbsp;%: <a href="https://t-j.ru/ekonomika-golosovogo-assistenta/">Т-Ж</a>, 27.05.2026, расчёт компании «Связьтранзит».</li>
       <li>Взносы 2026: <a href="https://tochka.com/knowledge/buhgalteriya/stavki-strahovyh-vznosov-v-2026-godu/">Точка</a>, 04.02.2026.</li>
-      <li>Яндекс: <a href="https://aistudio.yandex.ru/docs/ru/speechkit/pricing">тарифы SpeechKit</a>, проверено 30.10.2026. Наш замер на линии 12.10.2026: 0,82 ₽ за минуту. Тариф 0,89 ₽: наши данные, 30.10.2026.</li>
+      <li>Минута 0,89 ₽: распознавание и озвучка речи, наши данные, 30.10.2026.</li>
       <li>Разговор 5 минут: журнал звонков, октябрь 2026. Пауза, часы приёма, число разговоров одновременно, срок запуска: наши данные, 30.10.2026.</li>
       <li>Цены ботов: <a href="https://toolfox.ru/services/s/tomoru">Tomoru</a> 07.06.2026, <a href="https://toolfox.ru/services/s/zvonobot">Звонобот</a> 05.06.2026, <a href="https://toolfox.ru/services/s/robo-voice">Robovoice</a> 07.06.2026, <a href="https://workspace.ru/blog/ii-koll-centr-skolko-stoit-chto-umeet-i-kogda-okupaetsya-razbor-s-ciframi-dlya-malogo-biznesa/">Swift Agents</a>, дата не указана.</li>
       <li>VoiceBox: <a href="https://www.comnews.ru/content/221284/2022-07-20/2022-w29/mtt-pomozhet-dostavke-piccy">ComNews</a>, 20.07.2022. ЦПР: <a href="https://workspace.ru/cases/ai-bot-i-golosovoy-robot-dlya-dostavki-edy/">кейс</a>, март 2026.</li>
@@ -667,10 +718,13 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   <div class="ms sh-b" id="mBody"></div>
   <div class="sh-f"><button class="btn ghost" type="button" id="mBack">← Назад</button></div>
 </dialog>
+<template id="i-table"><h2>Бронь столика</h2><p>Нажмите на свободный стол и время.</p><div class="sq" id="tPlan"></div><div class="slots" id="tSlots"></div><p class="res" id="tRes"></p></template>
+<template id="i-date"><h2>Заказ к дате и времени</h2><p>Нажмите на число и время.</p><div class="cal" id="cCal"></div><div class="slots" id="cSlots"></div><p class="res" id="cRes"></p></template>
+<template id="i-pts"><h2>Баллы гостя</h2><p>Нажмите «да»: баллы спишутся.</p><div class="sq" id="pCard"></div><div class="rows"><div class="row"><span>Заказ</span><span>1 910 ₽</span></div><div class="row"><span>Баллы</span><span id="pOff">0</span></div><div class="row"><span>К оплате</span><span id="pPay">1 910 ₽</span></div></div><button class="btn ghost" type="button" id="pAgain" hidden>Ещё раз</button></template>
 <template id="i-oper"><h2>Оператор</h2><p>Сколько стоит приём заказов сейчас. Цифры из вашего расчёта.</p><ul class="ck gray"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span><span data-v="people"></span> чел. в штате<small><span data-v="human"></span> в месяц с налогами</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Минута разговора около <span data-v="humanMin"></span><small>Считаем от ваших цифр</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Один разговор сразу<small>Остальные ждут или вешают трубку</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Смены, отпуска, больничные<small>Нужна замена</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>За год уходят 30-45 %<small>Найм и обучение заново</small></span></li></ul></template>
 <template id="i-disp"><h2>Диспетчер</h2><p>Что меняется с Диспетчером. Цифры из вашего расчёта.</p><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span><span data-v="disp"></span> в месяц<small>Подписка и разговоры</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Минута разговора <span data-v="dispMin"></span><small>Вместе с подпиской</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Любые часы<small>Без доплат и замен</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Заказ сам в кассе<small>Никто не набирает руками</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Каждый звонок записан<small>Можно послушать в веб-панели</small></span></li></ul><p class="tiny">Один разговор одновременно, больше - другой тариф.</p></template>
 <template id="i-integ"><h2>Полная интеграция</h2><p>UMA и iiko. Гость договорил - заказ уже в системе ресторана.</p><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Заказ<small>Блюда, адрес, телефон, время, приборы, пометки</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Кухня и курьер<small>Кухня получает чек, курьер - адрес и телефон</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Стоп-лист<small>Обновляется сразу или раз в 15 минут</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Баллы<small>Называет баланс, списание попадает в заказ</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Касса не отвечает<small>Заказ не теряется, всё в веб-панели</small></span></li></ul><p class="tiny">Ссылку на оплату гостю отправляет ресторан, как сейчас.</p></template>
-<template id="i-logic"><h2>Детерминированная логика</h2><p>Бот на нейросети сочиняет ответ на ходу и может придумать то, чего нет. Диспетчер работает по правилам: одна фраза гостя - один проверенный ответ.</p><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Отвечает одинаково<small>Утром и вечером один ответ</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не придумывает<small>Блюда и цены только из ваших данных</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не ломается<small>С каждым обновлением проверок всё больше</small></span></li></ul><p class="tiny">Яндекс только слышит гостя и озвучивает ответ. Что сказать, решает Диспетчер.</p></template>
+<template id="i-logic"><h2>Детерминированная логика</h2><p>Бот на нейросети сочиняет ответ на ходу и может придумать то, чего нет. Диспетчер работает по правилам: одна фраза гостя - один проверенный ответ.</p><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Отвечает одинаково<small>Утром и вечером один ответ</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не придумывает<small>Блюда и цены только из ваших данных</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не ломается<small>С каждым обновлением проверок всё больше</small></span></li></ul><p class="tiny">Распознавание только слышит гостя и озвучивает ответ. Что сказать, решает Диспетчер.</p></template>
 <template id="i-panel"><h2>Что есть в панели</h2><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Разговор онлайн<small>Видно, пока он идёт</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Запись онлайн<small>Можно включить и послушать</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Касса онлайн<small>Видно, что касса на связи</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Принятые заказы<small>Все заказы в одном списке</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Скачать текст<small>Расшифровка каждого звонка</small></span></li></ul></template>
 <template id="i-terms"><h2>Условия подписки</h2><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>От 1 года<small>Минимальный срок</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>На 2 года скидка 7 %<small>14 871 ₽ в месяц, только на подписку</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Несколько точек на одном номере<small>+3 990 ₽ за точку, 5 точек: 31 950 ₽ в месяц. Условие обсуждается</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Следующий ресторан<small>15 990 ₽, с 3-го скидка 10 %</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Больше одного разговора сразу<small>Другой тариф, цена по запросу</small></span></li></ul></template>
 <template id="i-start"><h2>Запуск за 1 месяц</h2><p>За месяц всё настраиваем сами.</p><ol class="ck steps"><li><span>Подключаем точку<small>К вашему номеру и кассе</small></span></li><li><span>Загружаем меню<small>Блюда, цены, стоп-лист</small></span></li><li><span>Обучаем Диспетчера<small>На пробных звонках</small></span></li><li><span>Дальше всё работает<small>Гости звонят, заказы идут в кассу</small></span></li></ol></template>
@@ -899,6 +953,188 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   $('mDone').addEventListener('click', function () { $('mDlg').close(); });
   $('mDlg').addEventListener('click', function (e) { if (e.target === $('mDlg')) $('mDlg').close(); });
   $('mDlg').addEventListener('close', calc);
+  /* телефон: панель, которую можно потрогать */
+  var dCalls = [
+    {t: '18:40', len: 36, kind: 'доставка', sum: '1 910 ₽', items: ['Филадельфия классик × 1', 'Суши угорь × 6'], lines: [
+      [2, 'Гость', 'Одну филадельфию и шесть запечённых с угрём.'],
+      [8, 'Диспетчер', 'Филадельфия есть: с угрём - 750, классик - 890, с клубникой - 1200, DUO - 3250, сет - 3550 ₽. Какую?'],
+      [18, 'Гость', 'Классик.'],
+      [21, 'Диспетчер', 'Добавила Филадельфия классик, 1 штука. Итого 890 ₽. По позиции «запечённых с угрём» (6 штук): суши угорь 170 или ролл угорь 630?'],
+      [31, 'Гость', 'Суши.'],
+      [33, 'Диспетчер', 'Добавила суши угорь, 6 штук. Итого 1 910 ₽.']]},
+    {t: '18:12', len: 12, kind: 'самовывоз', sum: '890 ₽', items: ['Филадельфия классик × 1'], lines: [
+      [2, 'Гость', 'Одну филадельфию классик.'],
+      [7, 'Диспетчер', 'Добавила Филадельфия классик, 1 штука. Итого 890 ₽.']]}
+  ];
+  var dv = $('dView'), d = {tab: 'calls', call: -1, pos: 0, play: false, rate: 1, live: 0, shown: -1, order: -1}, dTimer = 0;
+  var tm = function (x) { x = Math.floor(x); return Math.floor(x / 60) + ':' + ('0' + x % 60).slice(-2); };
+  function dCard(c) {
+    return '<div class="m1"><b>' + c.t + '</b><span>разговор ' + tm(c.len) + '</span><em>' + c.kind + '</em><strong>' + c.sum + '</strong></div>';
+  }
+  function dLinesHtml(c, n) {
+    return c.lines.slice(0, n).map(function (l) {
+      return '<p class="d-l' + (l[1] === 'Гость' ? '' : ' me') + '"><b>' + l[1] + '</b>' + l[2] + '</p>';
+    }).join('');
+  }
+  function dLight() {
+    var c = dCalls[d.call], tx = dv.querySelector('.d-tx');
+    [].forEach.call(dv.querySelectorAll('.d-l'), function (e, n) {
+      var on = d.pos >= c.lines[n][0];
+      if (on && !e.classList.contains('on') && d.play) tx.scrollTop = Math.max(0, e.offsetTop - tx.clientHeight + e.offsetHeight + 4);
+      e.classList.toggle('on', on);
+    });
+    $('dTime').textContent = tm(d.pos) + ' / ' + tm(c.len);
+    $('dHead').style.left = (d.pos / c.len * 100) + '%';
+    $('dPlay').textContent = d.play ? '❚❚' : '\u25B6\uFE0E';
+  }
+  function dDraw() {
+    var h = '';
+    if (d.tab === 'live') {
+      h = '<div class="d-e" id="dLive"></div><div id="dLines"></div>';
+    } else if (d.tab === 'orders') {
+      h = dCalls.map(function (c, n) {
+        return '<button type="button" class="d-c" data-d="order:' + n + '">' + dCard(c).replace(/разговор [0-9:]+/, 'принят') +
+          (d.order === n ? '<div class="m2">Гость · +7 9** ***-**-** · ул. Примерная, 1</div><div class="m3">' + c.items.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</div><div class="d-dl" data-d="call:' + n + '">открыть звонок →</div>' : '') + '</button>';
+      }).join('');
+    } else if (d.call < 0) {
+      h = dCalls.map(function (c, n) { return '<button type="button" class="d-c" data-d="call:' + n + '">' + dCard(c) + '<div class="m2">Гость · +7 9** ***-**-**</div></button>'; }).join('');
+    } else {
+      var c = dCalls[d.call];
+      h = '<button type="button" class="d-back" data-d="list">‹ Все звонки</button>' + dCard(c) +
+        '<div class="d-p"><button type="button" data-d="skip:-10">-10</button><button type="button" class="pl" id="dPlay" data-d="play">\u25B6\uFE0E</button><button type="button" data-d="skip:10">+10</button><small id="dTime"></small></div>' +
+        '<div class="d-p">' + [1, 1.5, 2].map(function (r) { return '<button type="button" class="sp' + (d.rate === r ? ' on' : '') + '" data-d="rate:' + r + '">' + String(r).replace('.', ',') + '×</button>'; }).join('') + '<button type="button" class="d-dl" data-d="txt" style="border:0;margin-left:auto">скачать текст</button></div>' +
+        '<div class="d-tl" id="dTl" data-d="seek">' + c.lines.map(function (l) { return '<i style="left:' + (l[0] / c.len * 100) + '%"></i>'; }).join('') + '<b id="dHead"></b></div>' +
+        '<div class="d-tx">' + dLinesHtml(c, c.lines.length) + '</div>';
+    }
+    dv.innerHTML = h;
+    dv.scrollTop = 0;
+    dv.classList.toggle('det', d.tab === 'calls' && d.call >= 0);
+    if (d.tab === 'calls' && d.call >= 0) dLight();
+    if (d.tab === 'live') { d.shown = -1; dLiveDraw(); }
+    $('dLine').textContent = d.tab === 'live' ? 'Линия занята' : 'Линия свободна';
+    [].forEach.call($('mDemo').querySelectorAll('.d-tabs button'), function (b) { b.classList.toggle('on', b.getAttribute('data-d') === 'tab:' + d.tab); });
+  }
+  function dLiveDraw() {
+    var c = dCalls[0], n = c.lines.filter(function (l) { return d.live >= l[0]; }).length;
+    $('dLive').textContent = d.live < c.len ? 'Идёт разговор ' + tm(d.live) : 'Разговор завершён, заказ принят';
+    if (n !== d.shown) { d.shown = n; $('dLines').innerHTML = dLinesHtml(c, n).replace(/class="d-l/g, 'class="d-l on'); dv.scrollTop = dv.scrollHeight; }
+  }
+  function dTick() {
+    if (d.tab === 'live') {
+      d.live += 0.1;
+      if (d.live > dCalls[0].len + 4) d.live = 0;
+      dLiveDraw();
+    } else if (d.play && d.call >= 0) {
+      d.pos += 0.1 * d.rate;
+      if (d.pos >= dCalls[d.call].len) { d.pos = dCalls[d.call].len; d.play = false; }
+      dLight();
+    } else { clearInterval(dTimer); dTimer = 0; }
+  }
+  function dRun() { if (!dTimer) dTimer = setInterval(dTick, 100); }
+  $('mDemo').addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-d]') : null;
+    if (!t) return;
+    var a = t.getAttribute('data-d').split(':'), k = a[0], v = a[1], c = dCalls[d.call];
+    if (k === 'tab') { d.tab = v; d.play = false; d.call = -1; d.pos = 0; d.order = -1; dDraw(); if (v === 'live') dRun(); }
+    if (k === 'call') { d.tab = 'calls'; d.call = +v; d.pos = 0; d.play = false; dDraw(); }
+    if (k === 'list') { d.call = -1; d.play = false; dDraw(); }
+    if (k === 'order') { d.order = d.order === +v ? -1 : +v; dDraw(); }
+    if (k === 'play') { if (d.pos >= c.len) d.pos = 0; d.play = !d.play; dLight(); if (d.play) dRun(); }
+    if (k === 'skip') { d.pos = Math.max(0, Math.min(c.len, d.pos + +v)); dLight(); }
+    if (k === 'rate') { d.rate = +v; [].forEach.call(dv.querySelectorAll('.sp'), function (b) { b.classList.toggle('on', b === t); }); }
+    if (k === 'seek') { var r = t.getBoundingClientRect(); d.pos = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * c.len; dLight(); }
+    if (k === 'txt') {
+      var f = document.createElement('a');
+      f.href = URL.createObjectURL(new Blob([c.lines.map(function (l) { return tm(l[0]) + ' ' + l[1] + ': ' + l[2]; }).join('\n')], {type: 'text/plain;charset=utf-8'}));
+      f.download = 'zvonok-' + c.t.replace(':', '-') + '.txt';
+      f.click();
+      t.textContent = 'текст скачан';
+    }
+  });
+  dDraw();
+
+  /* телефон: бронь, дата и баллы */
+  function chips(box, list, cur, pick) {
+    box.innerHTML = list.map(function (x) { return '<button type="button" class="chip' + (x === cur ? ' on' : '') + '">' + x + '</button>'; }).join('');
+    [].forEach.call(box.children, function (b) {
+      b.addEventListener('click', function () {
+        [].forEach.call(box.children, function (o) { o.classList.toggle('on', o === b); });
+        pick(b.textContent);
+      });
+    });
+  }
+  var pics = function (n) { return document.querySelectorAll('#more .sq svg')[n].cloneNode(true); };
+  var inits = {
+    table: function () {
+      var svg = pics(0), x = [62, 160, 258, 62, 160, 258], time = '19:00', cur = 4;
+      var g = [].filter.call(svg.querySelectorAll('g'), function (e) { return !e.classList.contains('pin'); }), pin = svg.querySelector('.pin');
+      $('tPlan').appendChild(svg);
+      function res() {
+        pin.querySelector('text').textContent = 'бронь ' + time;
+        pin.style.transform = 'translateX(' + (x[cur] - 160) * 100 / 320 + '%)';
+        $('tRes').textContent = 'Стол ' + (cur + 1) + ', бронь на ' + time;
+      }
+      g.forEach(function (e, n) {
+        e.addEventListener('click', function () {
+          if (e.classList.contains('bz')) { $('tRes').textContent = 'Стол ' + (n + 1) + ' занят, выберите свободный'; return; }
+          g[cur].setAttribute('class', 'fr');
+          e.setAttribute('class', 'me');
+          cur = n;
+          res();
+        });
+      });
+      chips($('tSlots'), ['18:00', '19:00', '20:00', '21:00'], time, function (v) { time = v; res(); });
+      res();
+    },
+    date: function () {
+      var box = $('cCal'), day = 19, time = '19:00', h = '<b>Декабрь</b>';
+      ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].forEach(function (w) { h += '<span>' + w + '</span>'; });
+      h += '<span></span>';
+      for (var n = 1; n <= 31; n++) h += '<button type="button"' + (n === day ? ' class="on"' : '') + '>' + n + '</button>';
+      box.innerHTML = h;
+      function res() { $('cRes').textContent = 'Заказ на ' + day + ' декабря к ' + time; }
+      [].forEach.call(box.querySelectorAll('button'), function (b) {
+        b.addEventListener('click', function () {
+          [].forEach.call(box.querySelectorAll('button'), function (o) { o.classList.toggle('on', o === b); });
+          day = +b.textContent;
+          res();
+        });
+      });
+      chips($('cSlots'), ['18:00', '18:30', '19:00', '19:30', '20:00'], time, function (v) { time = v; res(); });
+      res();
+    },
+    pts: function () {
+      var svg = pics(2), num2 = svg.querySelector('.c2'), ask = svg.querySelector('.ask text'), yes = svg.querySelector('.yes'), off = 500, done = false;
+      $('pCard').appendChild(svg);
+      function spend() {
+        if (done) return;
+        done = true;
+        yes.style.display = 'none';
+        ask.textContent = 'Списано ' + off + ' баллов';
+        var t0 = 0;
+        (function step(t) {
+          t0 = t0 || t;
+          var k = Math.min(1, (t - t0) / 900);
+          num2.textContent = sp(Math.round(1000 - off * k));
+          $('pOff').textContent = '-' + Math.round(off * k);
+          $('pPay').textContent = fmt(1910 - Math.round(off * k));
+          if (k < 1) requestAnimationFrame(step); else $('pAgain').hidden = false;
+        })(performance.now());
+      }
+      yes.addEventListener('click', spend);
+      svg.querySelector('.ask').addEventListener('click', spend);
+      $('pAgain').addEventListener('click', function () {
+        done = false;
+        yes.style.display = '';
+        ask.textContent = 'Списать баллы?';
+        num2.textContent = '1 000';
+        $('pOff').textContent = '0';
+        $('pPay').textContent = '1 910 ₽';
+        $('pAgain').hidden = true;
+      });
+    }
+  };
+
   /* телефон: подробности на весь экран */
   function info(key) {
     var box = $('mBody');
@@ -906,6 +1142,7 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
     [].forEach.call(box.querySelectorAll('[data-v]'), function (e) { e.textContent = $(e.getAttribute('data-v')).textContent; });
     box.scrollTop = 0;
     $('mInfo').showModal();
+    if (inits[key]) inits[key]();
   }
   var infoAt = function (e) { return e.target.closest ? e.target.closest('[data-i]') : null; };
   document.addEventListener('click', function (e) {
