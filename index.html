@@ -253,6 +253,12 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   .nb{white-space:nowrap}
   .ms p{font-size:17px;line-height:1.45;color:var(--muted);margin-top:12px}
   .ms p.tiny{font-size:14px;line-height:1.4;margin-top:14px}
+  .ms.sh-b{flex:1 1 auto;min-height:0;scroll-snap-align:none}
+  .ms a{color:var(--acc);font-weight:600}
+  dialog.sheet{width:100%;height:100%;max-width:none;max-height:none;margin:0;padding:0;border-radius:0;box-shadow:none;background:var(--bg);color:var(--ink)}
+  dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
+  .sh-f{flex:none;background:var(--card);border-top:1px solid var(--line);padding:7px 16px calc(7px + env(safe-area-inset-bottom))}
+  .sh-f .btn{margin:0;width:auto;height:42px;padding:0 14px;font-size:14px}
   .ms .btn{margin-top:20px;height:48px;font-size:16px;padding:0 24px;align-self:flex-start}
   .ms .btn.wide{align-self:stretch}
   .num{display:block;font-size:50px;font-weight:800;color:var(--acc);letter-spacing:-.03em;line-height:1.05;margin-top:6px;white-space:nowrap}
@@ -261,15 +267,19 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   .ms .call{margin-top:18px}
   .ms .turn{font-size:15px;line-height:1.4;max-width:94%}
   .pics{display:grid;gap:10px;margin-top:16px}
-  .pics .sq{display:flex;align-items:center;gap:14px;padding:10px}
-  .pics .sq svg{flex:none;width:118px}
-  .pics .sq b{margin:0;font-size:17px}.pics .sq span{font-size:14px}
+  .pics .sq{display:flex;align-items:center;gap:12px;padding:8px}
+  .pics .sq svg{flex:0 0 54%;width:54%;max-width:230px}
+  .pics .sq>div{min-width:0}
+  .pics .sq b{margin:0;font-size:16px}.pics .sq span{font-size:13px}
   .ck{list-style:none;padding:0;margin:16px 0 0}
   .ck li{display:flex;align-items:center;gap:14px;font-size:18px;font-weight:600;line-height:1.3;padding:13px 0;border-top:1px solid var(--line)}
   .ck li:last-child{border-bottom:1px solid var(--line)}
   .ck svg{flex:none;width:28px;height:28px;color:var(--acc)}
   .ck.gray svg{color:var(--muted)}
   .ck small{display:block;font-size:14px;font-weight:500;color:var(--muted);margin-top:2px}
+  .steps{counter-reset:s}
+  .steps li{counter-increment:s}
+  .steps li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
   .mf{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
   .mf label{display:block;font-size:13px;font-weight:600;line-height:1.25}
   .mf input{width:100%;margin-top:5px;padding:11px 12px;font:700 20px/1.2 var(--sans);color:var(--ink);background:var(--card);border:1px solid var(--tan);border-radius:var(--r-s);-webkit-appearance:none;appearance:none}
@@ -279,7 +289,12 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   .ms .row span:last-child{font-weight:800}
   .fl{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 10px 12px;margin-top:12px}
   .fl.d{border-color:var(--acc);background:var(--soft)}
-  .fl b{display:block;font-size:15px;margin:0 4px 10px}.fl.d b{color:var(--acc)}
+  .fl[role=button]{cursor:pointer}
+  .fl b{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:15px;margin:0 4px 10px}.fl.d b{color:var(--acc)}
+  .fl b i{font-style:normal;font-size:13px;font-weight:600;color:var(--acc);white-space:nowrap}
+  .fl.int{background:var(--ink);border-color:var(--ink);color:#fff}
+  .fl.int b{margin-bottom:2px}.fl.int b i{color:#fff}
+  .fl.int span{display:block;margin:0 4px;font-size:14px;color:#cfcac7}
   .fl ol{list-style:none;margin:0;padding:0;display:flex;align-items:flex-start}
   .fl li{flex:1;position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:12px;font-weight:600;line-height:1.2}
   .fl li+li::before{content:"→";position:absolute;left:-6px;top:10px;color:var(--tan);font-size:16px}
@@ -302,6 +317,7 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
 }
 @media (max-width:860px) and (max-height:660px){
   .ms{padding-top:16px}
+  .sh-b .ck li{padding:10px 0}
 }
 @media (max-width:860px) and (max-height:600px){
   .ms{padding:12px 18px 8px}
@@ -317,7 +333,9 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   .fl{padding:9px 8px;margin-top:8px}.fl b{margin-bottom:6px;font-size:14px}.fl .ic{width:34px;height:34px}.fl .ic svg{width:18px;height:18px}.fl li{font-size:11px}
   .ms .mock{margin-top:10px;font-size:12px}
   .pr2{margin-top:10px}.pr2 .num{font-size:28px}
-  .pics{margin-top:10px;gap:8px}.pics .sq{padding:7px 10px}.pics .sq svg{width:96px}.pics .sq b{font-size:15px}.pics .sq span{font-size:13px}
+  .pics{margin-top:10px;gap:8px}.pics .sq{padding:6px 8px;gap:10px}.pics .sq svg{flex-basis:44%;width:44%}.pics .sq b{font-size:15px}.pics .sq span{font-size:13px}
+  .fl.int span{font-size:13px}
+  .steps li::before{width:24px;height:24px}
 }
 @media (max-width:360px){
   .ms{padding-left:16px;padding-right:16px}
@@ -539,19 +557,21 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   </div></div>
   <div class="ms" data-m="pos"><div class="in">
     <h2>Заказ сразу <em>в кассе</em></h2>
-    <p>Никто не набирает заказ руками. Работает с UMA и iiko.</p>
-    <div class="fl"><b>Оператор</b><ol><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>Слушает</li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>Записывает</li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16v10H4z"/><path d="M7 10V4h10v6"/><path d="M8 14h2M14 14h2M8 17h8"/></svg></span>Набирает в кассе</li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>Кухня</li></ol></div>
-    <div class="fl d"><b>Диспетчер</b><ol><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>Слушает</li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16v10H4z"/><path d="M7 10V4h10v6"/><path d="M8 14h2M14 14h2M8 17h8"/></svg></span>Заказ сам в кассе</li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>Кухня</li></ol></div>
+    <p>Никто не набирает заказ руками.</p>
+    <div class="fl" role="button" tabindex="0" data-i="oper"><b>Оператор<i>Подробнее ›</i></b><ol><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>Слушает</li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>Записывает</li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16v10H4z"/><path d="M7 10V4h10v6"/><path d="M8 14h2M14 14h2M8 17h8"/></svg></span>Набирает в кассе</li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>Кухня</li></ol></div>
+    <div class="fl d" role="button" tabindex="0" data-i="disp"><b>Диспетчер<i>Подробнее ›</i></b><ol><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>Слушает</li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16v10H4z"/><path d="M7 10V4h10v6"/><path d="M8 14h2M14 14h2M8 17h8"/></svg></span>Заказ сам в кассе</li><li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span>Кухня</li></ol></div>
+    <div class="fl int" role="button" tabindex="0" data-i="integ"><b>Полная интеграция<i>Подробнее ›</i></b><span>UMA и iiko: заказ, стоп-лист, баллы</span></div>
   </div></div>
   <div class="ms" data-m="logic"><div class="in">
     <h2>Говорит только <em>по вашему меню</em></h2>
-    <p>Это не нейросеть. Ответы собраны из данных вашего заведения.</p>
+    <p>Это не нейросеть, а детерминированная логика. Ответы собраны из данных вашего заведения.</p>
     <ul class="ck">
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не выдумывает блюда и цены</span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не предлагает блюда из <span class="nb">стоп-листа</span></span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не отдаёт данные в ChatGPT и другие ИИ</span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не понял - переспросит<small>Догадку кладёт в заказ только после «да»</small></span></li>
     </ul>
+    <p class="tiny"><a href="#" data-i="logic">Что такое детерминированная логика</a>: почему это надёжнее.</p>
   </div></div>
   <div class="ms" data-m="weak"><div class="in">
     <h2>Где оператор <em>пока лучше</em></h2>
@@ -574,7 +594,7 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
       <div class="m5"><i style="left:2%"></i><i style="left:7%"></i><i style="left:12%"></i><i style="left:15%"></i><i style="left:18%"></i><i style="left:23%"></i><i style="left:26%"></i><i style="left:31%"></i><i style="left:34%"></i><i style="left:37%"></i><i style="left:39%"></i><i style="left:44%"></i><i style="left:47%"></i><i style="left:50%"></i><i style="left:53%"></i><i style="left:61%"></i><i style="left:63%"></i><i style="left:67%"></i><i style="left:70%"></i><i style="left:73%"></i><i style="left:78%"></i><i style="left:81%"></i><i style="left:83%"></i><i style="left:89%"></i><i style="left:92%"></i><i style="left:93%"></i><i style="left:99%"></i><i class="r" style="left:57%"></i></div>
       <div class="m6"><span>фраза гостя</span><span class="r">тишина дольше 8 с</span><u>транскрипт</u><u>открыть звонок →</u></div>
     </div>
-    <p class="tiny">Запись, расшифровка и все заказы в одном списке.</p>
+    <p class="tiny"><a href="#" data-i="panel">Что есть в панели</a>: онлайн, запись, заказы, текст.</p>
   </div></div>
   <div class="ms" data-m="more"><div class="in">
     <h2>Бронь, дата <em>и баллы</em></h2>
@@ -590,14 +610,14 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
     <div class="pr pr2"><strong class="num">0,89 ₽</strong><span>минута разговора, Яндексу напрямую</span></div>
     <ul class="ck">
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Без платы за подключение</span></li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>От 1 года, на 2 года скидка 7 %</span></li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Запуск за 1 месяц</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>От 1 года<small><a href="#" data-i="terms">Узнать больше</a>: скидка, точки, рестораны</small></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Запуск за 1 месяц<small><a href="#" data-i="start">Как проходит запуск</a></small></span></li>
     </ul>
-    <p class="tiny">Один разговор одновременно, больше - другой тариф. Несколько точек на одном номере: +3 990 ₽ за точку, условие обсуждается.</p>
+    <p class="tiny">Один разговор одновременно, больше - другой тариф.</p>
   </div></div>
   <div class="ms" data-m="contact"><div class="in">
     <h2>Запуск <em>за 1 месяц</em></h2>
-    <p>Подключим к вашему номеру, загрузим меню, настроим на ваших звонках.</p>
+    <p>Подключим к вашему номеру, загрузим меню, настроим на ваших звонках. <a href="#" data-i="start">Как проходит запуск</a></p>
     <button class="btn wide" type="button" id="mContact">Связаться</button>
     <p class="tiny">Полная версия с калькулятором и сравнением - на компьютере: restdisp.ru</p>
   </div></div>
@@ -641,6 +661,18 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   <a href="#" class="lnk" id="mHow">Как считали</a>
   <button class="btn" type="button" id="mDone">Готово</button>
 </dialog>
+
+<dialog id="mInfo" class="sheet" aria-label="Подробнее">
+  <div class="ms sh-b" id="mBody"></div>
+  <div class="sh-f"><button class="btn ghost" type="button" id="mBack">← Назад</button></div>
+</dialog>
+<template id="i-oper"><h2>Оператор</h2><p>Сколько стоит приём заказов сейчас. Цифры из вашего расчёта.</p><ul class="ck gray"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span><span data-v="people"></span> чел. в штате<small><span data-v="human"></span> в месяц с налогами</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Минута разговора около <span data-v="humanMin"></span><small>Считаем от ваших цифр</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Один разговор сразу<small>Остальные ждут или вешают трубку</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Смены, отпуска, больничные<small>Нужна замена</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>За год уходят 30-45 %<small>Найм и обучение заново</small></span></li></ul></template>
+<template id="i-disp"><h2>Диспетчер</h2><p>Что меняется с Диспетчером. Цифры из вашего расчёта.</p><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span><span data-v="disp"></span> в месяц<small>Подписка и разговоры</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Минута разговора <span data-v="dispMin"></span><small>Вместе с подпиской</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Любые часы<small>Без доплат и замен</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Заказ сам в кассе<small>Никто не набирает руками</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Каждый звонок записан<small>Можно послушать в веб-панели</small></span></li></ul><p class="tiny">Один разговор одновременно, больше - другой тариф.</p></template>
+<template id="i-integ"><h2>Полная интеграция</h2><p>UMA и iiko. Гость договорил - заказ уже в системе ресторана.</p><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Заказ<small>Блюда, адрес, телефон, время, приборы, пометки</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Кухня и курьер<small>Кухня получает чек, курьер - адрес и телефон</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Стоп-лист<small>Обновляется сразу или раз в 15 минут</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Баллы<small>Называет баланс, списание попадает в заказ</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Касса не отвечает<small>Заказ не теряется, всё в веб-панели</small></span></li></ul><p class="tiny">Ссылку на оплату гостю отправляет ресторан, как сейчас.</p></template>
+<template id="i-logic"><h2>Детерминированная логика</h2><p>Бот на нейросети сочиняет ответ на ходу и может придумать то, чего нет. Диспетчер работает по правилам: одна фраза гостя - один проверенный ответ.</p><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Отвечает одинаково<small>Утром и вечером один ответ</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не придумывает<small>Блюда и цены только из ваших данных</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не ломается<small>С каждым обновлением проверок всё больше</small></span></li></ul><p class="tiny">Яндекс только слышит гостя и озвучивает ответ. Что сказать, решает Диспетчер.</p></template>
+<template id="i-panel"><h2>Что есть в панели</h2><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Разговор онлайн<small>Видно, пока он идёт</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Запись онлайн<small>Можно включить и послушать</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Касса онлайн<small>Видно, что касса на связи</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Принятые заказы<small>Все заказы в одном списке</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Скачать текст<small>Расшифровка каждого звонка</small></span></li></ul></template>
+<template id="i-terms"><h2>Условия подписки</h2><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>От 1 года<small>Минимальный срок</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>На 2 года скидка 7 %<small>14 871 ₽ в месяц, только на подписку</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Несколько точек на одном номере<small>+3 990 ₽ за точку, 5 точек: 31 950 ₽ в месяц. Условие обсуждается</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Следующий ресторан<small>15 990 ₽, с 3-го скидка 10 %</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Больше одного разговора сразу<small>Другой тариф, цена по запросу</small></span></li></ul></template>
+<template id="i-start"><h2>Запуск за 1 месяц</h2><p>За месяц всё настраиваем сами.</p><ol class="ck steps"><li><span>Подключаем точку<small>К вашему номеру и кассе</small></span></li><li><span>Загружаем меню<small>Блюда, цены, стоп-лист</small></span></li><li><span>Обучаем Диспетчера<small>На пробных звонках</small></span></li><li><span>Дальше всё работает<small>Гости звонят, заказы идут в кассу</small></span></li></ol></template>
 
 <dialog id="dlg">
   <h3>Связаться с нами</h3>
@@ -866,6 +898,24 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
   $('mDone').addEventListener('click', function () { $('mDlg').close(); });
   $('mDlg').addEventListener('click', function (e) { if (e.target === $('mDlg')) $('mDlg').close(); });
   $('mDlg').addEventListener('close', calc);
+  /* телефон: подробности на весь экран */
+  function info(key) {
+    var box = $('mBody');
+    box.innerHTML = $('i-' + key).innerHTML;
+    [].forEach.call(box.querySelectorAll('[data-v]'), function (e) { e.textContent = $(e.getAttribute('data-v')).textContent; });
+    box.scrollTop = 0;
+    $('mInfo').showModal();
+  }
+  var infoAt = function (e) { return e.target.closest ? e.target.closest('[data-i]') : null; };
+  document.addEventListener('click', function (e) {
+    var t = infoAt(e);
+    if (t) { e.preventDefault(); info(t.getAttribute('data-i')); }
+  });
+  document.addEventListener('keydown', function (e) {
+    var t = infoAt(e);
+    if (t && e.key === 'Enter' && t.tagName !== 'A') info(t.getAttribute('data-i'));
+  });
+  $('mBack').addEventListener('click', function () { $('mInfo').close(); });
   [].forEach.call(document.querySelectorAll('#more .sq svg'), function (g, n) {
     var box = $('mPics').children[n];
     box.insertBefore(g.cloneNode(true), box.firstChild);
