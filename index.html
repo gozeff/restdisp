@@ -1001,7 +1001,8 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
     });
     $('dTime').textContent = tm(d.pos) + ' / ' + tm(c.len);
     $('dHead').style.left = (d.pos / c.len * 100) + '%';
-    $('dPlay').textContent = d.play ? '❚❚' : '\u25B6\uFE0E';
+    var g = d.play ? '❚❚' : '\u25B6\uFE0E';
+    if ($('dPlay').textContent !== g) $('dPlay').textContent = g;
   }
   function dDraw() {
     var h = '';
