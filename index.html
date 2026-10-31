@@ -66,6 +66,9 @@ button,a,input{touch-action:manipulation}
 @media (hover:hover){.btn:hover{background:var(--acc-dark);border-color:var(--acc-dark)}}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
 @media (hover:hover){.btn.ghost:hover{background:var(--bg);border-color:var(--line)}}
+.btn.act{display:flex;width:100%;height:auto;min-height:44px;padding:9px 14px;margin-top:14px;background:var(--card);color:var(--acc);border-color:var(--acc);white-space:normal;text-align:center;line-height:1.2}
+@media (hover:hover){.btn.act:hover{background:var(--bg);border-color:var(--acc-dark)}}
+.ms .act+p.tiny{margin-top:6px;text-align:center}
 .btn[disabled]{visibility:hidden}
 .btn:focus-visible,input:focus-visible,.tabs button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
 
@@ -241,7 +244,8 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
 .d-v{position:relative;flex:1;min-height:0;overflow-y:auto;margin-top:8px;overscroll-behavior:contain}
 .d-v.det>*{flex-shrink:0}.d-v.det>.d-tx{flex-shrink:1}
 .d-c{display:block;width:100%;appearance:none;-webkit-appearance:none;border:0;text-align:left;font:inherit;color:inherit;background:#1f1f22;border-radius:8px;padding:9px 10px;margin-bottom:6px;cursor:pointer}
-.d-c .m2{margin-top:5px}.d-c .m3{margin-top:6px}
+.d-c .m2{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:5px}.d-c .m3{margin-top:6px}
+.d-go{flex:none;background:#79b4ee;color:#141416;font:700 12px/1 var(--sans);padding:7px 11px;border-radius:999px;white-space:nowrap}
 .d-back{appearance:none;-webkit-appearance:none;border:0;background:none;color:#79b4ee;font:600 13px/1 var(--sans);padding:2px 0 8px;cursor:pointer}
 .d-p{display:flex;align-items:center;gap:5px;margin-top:8px}
 .d-p button{appearance:none;-webkit-appearance:none;border:1px solid #34343a;background:none;color:#ededeb;font:600 12px/1 var(--sans);min-width:34px;height:30px;padding:0 6px;border-radius:6px;cursor:pointer}
@@ -316,6 +320,7 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
   dialog.sheet{width:100%;height:100%;max-width:none;max-height:none;margin:0;border-radius:0;box-shadow:none}
   .sh-b p{margin-top:12px}
   .demo{max-height:460px;margin-top:12px}
+  .dopen>p,.dopen>.act{display:none}
   .ms .btn{margin-top:20px;height:48px;font-size:16px;padding:0 24px;align-self:flex-start}
   .ms .btn.wide{align-self:stretch}
   .num{display:block;font-size:50px;font-weight:800;color:var(--acc);letter-spacing:-.03em;line-height:1.05;margin-top:6px;white-space:nowrap}
@@ -384,6 +389,7 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
   .sh-b .ck li{padding:8px 0}
   .ms .mock{padding:10px 12px}.ms .mock+.tiny{margin-top:6px}.m5{height:20px}.m5 i{top:4px;bottom:4px}
   .ms h2{font-size:25px}.ms p{font-size:15px;margin-top:8px}.ms p.tiny{margin-top:10px;font-size:13px}
+  .btn.act{min-height:38px;padding:6px 12px;margin-top:8px;font-size:14px}.ms .act+p.tiny{margin-top:4px}
   .num{font-size:42px}
   .ms .btn{margin-top:14px;height:44px}
   .ms .call{margin-top:12px}.ms .turn{font-size:13.5px;padding:7px 10px;margin-bottom:6px}.call small{margin-bottom:8px}
@@ -401,7 +407,9 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
   .fl.int span{font-size:13px}
   .steps li::before{width:24px;height:24px}
 }
+@media (max-width:360px) and (max-height:600px){.btn.act{min-height:32px;margin-top:6px;padding:4px 8px}}
 @media (max-width:360px){
+  .btn.act{font-size:13px;padding:6px 8px}
   .ms{padding-left:16px;padding-right:16px}
   .ms h2{font-size:26px}.num{font-size:42px}.ck li{font-size:16px}
   .pager .btn{padding:0 10px;font-size:13px}#count{gap:4px}#count i{width:5px;height:5px}
@@ -610,7 +618,8 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
       <div class="row"><span>Подписка и разговоры в месяц</span><span id="mDisp"></span></div>
     </div>
     <p class="tiny" id="mLoad"></p>
-    <p class="tiny"><a href="#" id="mMore">Уточнить расчёт</a>: длительность, часы, смены, точки.</p>
+    <button type="button" class="btn act" id="mMore">Уточнить расчёт</button>
+    <p class="tiny">Длительность, часы, смены, точки.</p>
   </div></div>
   <div class="ms" data-m="pos"><div class="in">
     <h2>Заказ сразу <em>в кассе</em></h2>
@@ -622,13 +631,13 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
   <div class="ms" data-m="logic"><div class="in">
     <h2>Говорит только <em>по вашему меню</em></h2>
     <p>Это не нейросеть, а детерминированная логика. Ответы собраны из данных вашего заведения.</p>
+    <button type="button" class="btn act" data-i="logic">Что такое детерминированная логика</button>
     <ul class="ck">
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не выдумывает блюда и цены</span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не предлагает блюда из <span class="nb">стоп-листа</span></span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не отдаёт данные в ChatGPT и другие ИИ</span></li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не понял - переспросит<small>Догадку кладёт в заказ только после «да»</small></span></li>
     </ul>
-    <p class="tiny"><a href="#" data-i="logic">Что такое детерминированная логика</a>: почему это надёжнее.</p>
   </div></div>
   <div class="ms" data-m="weak"><div class="in">
     <h2>Где оператор <em>пока лучше</em></h2>
@@ -648,7 +657,8 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
       <div class="d-tabs"><button type="button" data-d="tab:live">Live</button><button type="button" class="on" data-d="tab:calls">Звонки</button><button type="button" data-d="tab:orders">Заказы</button></div>
       <div class="d-v" id="dView"></div>
     </div>
-    <p class="tiny">Понажимайте, всё работает. <a href="#" data-i="panel">Что есть в панели</a></p>
+    <button type="button" class="btn act" data-i="panel">Что есть в панели</button>
+    <p class="tiny">Понажимайте, всё работает.</p>
   </div></div>
   <div class="ms" data-m="more"><div class="in">
     <h2>Бронь, дата <em>и баллы</em></h2>
@@ -957,20 +967,22 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
   $('mDlg').addEventListener('close', calc);
   /* панель, которую можно потрогать */
   var dCalls = [
-    {t: '18:40', len: 50, kind: 'доставка', sum: '1 910 ₽', items: ['Филадельфия классик × 1', 'Запечённые суши с угрём × 6'], lines: [
-      [2, 'Гость', 'Одну филадельфию и шесть запечённых с угрём.'],
-      [8, 'Диспетчер', 'Филадельфия есть: с угрём - 750, классик - 890, с клубникой - 1200, DUO - 3250, сет - 3550 ₽. Какую?'],
-      [18, 'Гость', 'Классик.'],
-      [21, 'Диспетчер', 'Добавила Филадельфия классик, 1 штука. Итого 890 ₽. По позиции «запечённых с угрём» (6 штук): суши угорь 170 или ролл угорь 630?'],
-      [31, 'Гость', 'Суши.'],
-      [33, 'Диспетчер', 'Суши с угрём есть: спайси - 150, запечённые - 170 ₽. Какие?'],
-      [41, 'Гость', 'Запечённые.'],
-      [43, 'Диспетчер', 'Добавила запечённые суши с угрём, 6 штук. Итого 1 910 ₽. Что-нибудь ещё?']]},
-    {t: '18:12', len: 12, kind: 'самовывоз', sum: '890 ₽', items: ['Филадельфия классик × 1'], lines: [
-      [2, 'Гость', 'Одну филадельфию классик.'],
-      [7, 'Диспетчер', 'Добавила Филадельфия классик, 1 штука. Итого 890 ₽. Что-нибудь ещё?']]}
+    {t: '18:40', len: 55.7, mp3: 'audio/call-1.mp3', kind: 'доставка', sum: '1 910 ₽', items: ['Филадельфия классик × 1', 'Запечённые суши с угрём × 6'], lines: [
+      [0.6, 'Гость', 'Одну филадельфию и шесть запечённых с угрём.'],
+      [6, 'Диспетчер', 'Филадельфия есть: с угрём - 750, классик - 890, с клубникой - 1200, DUO - 3250, сет - 3550 ₽. Какую?'],
+      [20.3, 'Гость', 'Классик.'],
+      [23.4, 'Диспетчер', 'Добавила Филадельфия классик, 1 штука. Итого 890 ₽. По позиции «запечённых с угрём» (6 штук): суши угорь 170 или ролл угорь 630?'],
+      [35.9, 'Гость', 'Суши.'],
+      [38.9, 'Диспетчер', 'Суши с угрём есть: спайси - 150, запечённые - 170 ₽. Какие?'],
+      [45.9, 'Гость', 'Запечённые.'],
+      [49.2, 'Диспетчер', 'Добавила запечённые суши с угрём, 6 штук. Итого 1 910 ₽. Что-нибудь ещё?']]},
+    {t: '18:12', len: 10.8, mp3: 'audio/call-2.mp3', kind: 'самовывоз', sum: '890 ₽', items: ['Филадельфия классик × 1'], lines: [
+      [0.6, 'Гость', 'Одну филадельфию классик.'],
+      [4.7, 'Диспетчер', 'Добавила Филадельфия классик, 1 штука. Итого 890 ₽. Что-нибудь ещё?']]}
   ];
-  var dv = $('dView'), d = {tab: 'calls', call: -1, pos: 0, play: false, rate: 1, live: 0, shown: -1, order: -1}, dTimer = 0;
+  var dv = $('dView'), d = {tab: 'calls', call: -1, pos: 0, play: false, snd: false, rate: 1, live: 0, shown: -1, order: -1}, dTimer = 0;
+  var dA = new Audio();
+  dA.preload = 'none';
   var tm = function (x) { x = Math.floor(x); return Math.floor(x / 60) + ':' + ('0' + x % 60).slice(-2); };
   function dCard(c) {
     return '<div class="m1"><b>' + c.t + '</b><span>разговор ' + tm(c.len) + '</span><em>' + c.kind + '</em><strong>' + c.sum + '</strong></div>';
@@ -1001,7 +1013,7 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
           (d.order === n ? '<div class="m2">Гость · +7 9** ***-**-** · ул. Примерная, 1</div><div class="m3">' + c.items.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</div><div class="d-dl" data-d="call:' + n + '">открыть звонок →</div>' : '') + '</button>';
       }).join('');
     } else if (d.call < 0) {
-      h = dCalls.map(function (c, n) { return '<button type="button" class="d-c" data-d="call:' + n + '">' + dCard(c) + '<div class="m2">Гость · +7 9** ***-**-**</div></button>'; }).join('');
+      h = dCalls.map(function (c, n) { return '<button type="button" class="d-c" data-d="call:' + n + '">' + dCard(c) + '<div class="m2">Гость · +7 9** ***-**-**<span class="d-go" data-d="listen:' + n + '">\u25B6\uFE0E Прослушать</span></div></button>'; }).join('');
     } else {
       var c = dCalls[d.call];
       h = '<button type="button" class="d-back" data-d="list">‹ Все звонки</button>' + dCard(c) +
@@ -1013,6 +1025,7 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
     dv.innerHTML = h;
     dv.scrollTop = 0;
     dv.classList.toggle('det', d.tab === 'calls' && d.call >= 0);
+    $('mDemo').parentNode.classList.toggle('dopen', d.tab === 'calls' && d.call >= 0);
     if (d.tab === 'calls' && d.call >= 0) dLight();
     if (d.tab === 'live') { d.shown = -1; dLiveDraw(); }
     $('dLine').textContent = d.tab === 'live' ? 'Линия занята' : 'Линия свободна';
@@ -1029,24 +1042,42 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
       if (d.live > dCalls[0].len + 4) d.live = 0;
       dLiveDraw();
     } else if (d.play && d.call >= 0) {
-      d.pos += 0.1 * d.rate;
-      if (d.pos >= dCalls[d.call].len) { d.pos = dCalls[d.call].len; d.play = false; }
+      if (!d.snd) d.pos += 0.1 * d.rate;
+      else if (dA.readyState > 1) d.pos = dA.currentTime;
+      if (d.pos >= dCalls[d.call].len) { d.pos = dCalls[d.call].len; d.play = false; dHush(); }
       dLight();
     } else { clearInterval(dTimer); dTimer = 0; }
   }
   function dRun() { if (!dTimer) dTimer = setInterval(dTick, 100); }
+  function dHush() { d.snd = false; dA.pause(); }
+  function dSound() {
+    var c = dCalls[d.call];
+    if (dA.getAttribute('src') !== c.mp3) dA.src = c.mp3;
+    dA.playbackRate = d.rate;
+    d.snd = true;
+    dSeek();
+    var p = dA.play();
+    if (p && p.catch) p.catch(function (e) { if (e.name !== 'AbortError') d.snd = false; });
+  }
+  function dSeek() { if (d.snd) try { dA.currentTime = d.pos; } catch (e) {} }
+  function dStop() { if (d.play) { d.play = false; dHush(); if (d.call >= 0) dLight(); } }
+  dA.addEventListener('loadedmetadata', function () { if (d.snd) { dA.playbackRate = d.rate; dSeek(); } });
+  dA.addEventListener('error', function () { d.snd = false; });
+  dA.addEventListener('ended', function () { if (d.call >= 0) { d.pos = dCalls[d.call].len; d.play = false; dHush(); dLight(); } });
+  document.addEventListener('visibilitychange', function () { if (document.hidden) dStop(); });
   $('mDemo').addEventListener('click', function (e) {
     var t = e.target.closest ? e.target.closest('[data-d]') : null;
     if (!t) return;
     var a = t.getAttribute('data-d').split(':'), k = a[0], v = a[1], c = dCalls[d.call];
-    if (k === 'tab') { d.tab = v; d.play = false; d.call = -1; d.pos = 0; d.order = -1; dDraw(); if (v === 'live') dRun(); }
-    if (k === 'call') { d.tab = 'calls'; d.call = +v; d.pos = 0; d.play = false; dDraw(); }
-    if (k === 'list') { d.call = -1; d.play = false; dDraw(); }
+    if (k === 'tab') { d.tab = v; d.play = false; dHush(); d.call = -1; d.pos = 0; d.order = -1; dDraw(); if (v === 'live') dRun(); }
+    if (k === 'call') { d.tab = 'calls'; d.call = +v; d.pos = 0; d.play = false; dHush(); dDraw(); }
+    if (k === 'listen') { d.tab = 'calls'; d.call = +v; d.pos = 0; d.play = true; dDraw(); dSound(); dRun(); }
+    if (k === 'list') { d.call = -1; d.play = false; dHush(); dDraw(); }
     if (k === 'order') { d.order = d.order === +v ? -1 : +v; dDraw(); }
-    if (k === 'play') { if (d.pos >= c.len) d.pos = 0; d.play = !d.play; dLight(); if (d.play) dRun(); }
-    if (k === 'skip') { d.pos = Math.max(0, Math.min(c.len, d.pos + +v)); dLight(); }
-    if (k === 'rate') { d.rate = +v; [].forEach.call(dv.querySelectorAll('.sp'), function (b) { b.classList.toggle('on', b === t); }); }
-    if (k === 'seek') { var r = t.getBoundingClientRect(); d.pos = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * c.len; dLight(); }
+    if (k === 'play') { if (d.pos >= c.len) d.pos = 0; d.play = !d.play; dLight(); if (d.play) { dSound(); dRun(); } else dHush(); }
+    if (k === 'skip') { d.pos = Math.max(0, Math.min(c.len, d.pos + +v)); dSeek(); dLight(); }
+    if (k === 'rate') { d.rate = +v; dA.playbackRate = d.rate; [].forEach.call(dv.querySelectorAll('.sp'), function (b) { b.classList.toggle('on', b === t); }); }
+    if (k === 'seek') { var r = t.getBoundingClientRect(); d.pos = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)) * c.len; dSeek(); dLight(); }
     if (k === 'txt') {
       var f = document.createElement('a');
       f.href = URL.createObjectURL(new Blob([c.lines.map(function (l) { return tm(l[0]) + ' ' + l[1] + ': ' + l[2]; }).join('\n')], {type: 'text/plain;charset=utf-8'}));
@@ -1060,6 +1091,7 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
   function dPlace() { if (phone()) dSpot.parentNode.insertBefore($('mDemo'), dSpot); else $('pcDemo').appendChild($('mDemo')); }
   dPlace();
   window.addEventListener('resize', dPlace);
+  if (window.IntersectionObserver) new IntersectionObserver(function (a) { if (!a[0].isIntersecting) dStop(); }).observe($('mDemo'));
 
   /* бронь, дата и баллы */
   function chips(box, list, cur, pick) {
@@ -1145,6 +1177,7 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
 
   /* подробности в отдельном окне */
   function info(key) {
+    dStop();
     var box = $('mBody');
     box.innerHTML = $('i-' + key).innerHTML;
     [].forEach.call(box.querySelectorAll('[data-v]'), function (e) { e.textContent = $(e.getAttribute('data-v')).textContent; });
