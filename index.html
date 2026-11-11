@@ -1216,5 +1216,9 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
   if (phone()) mPager();
 })();
 </script>
+<script>
+// Сайт открыт в окне на imakeit.ru: Esc закрывает это окно
+if (window.parent !== window) addEventListener("keydown", function (e) { if (e.key === "Escape") parent.postMessage("imakeit:esc", "*"); });
+</script>
 </body>
 </html>
