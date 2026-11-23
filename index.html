@@ -207,7 +207,7 @@ dialog p{font-size:13px;color:var(--muted);margin-top:6px}
 .m6{display:flex;gap:14px;align-items:center;color:#9a9a97;font-size:12px;margin-top:auto;padding-top:8px}
 .m6 span.r{color:#ee6a63}.m6 u{text-decoration:none;color:#79b4ee}.m6 u:first-of-type{margin-left:auto}
 /* тарифы */
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:var(--mt)}
+.plans{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap);margin-top:var(--mt)}
 .plan{display:flex;flex-direction:column}
 .plan.main{border-color:var(--acc)}
 .plan small{color:var(--muted);font-size:13px;font-weight:600}
@@ -494,8 +494,6 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
           <input id="staff" type="number" min="1" max="50" step="1" inputmode="numeric"></label>
         <label>Зарплата на руки, ₽
           <input id="salary" type="number" min="20000" max="300000" step="1000" value="45000" inputmode="numeric"></label>
-        <label>Точек доставки
-          <input id="points" type="number" min="1" max="100" value="1" inputmode="numeric"></label>
       </div>
       <p class="hint">Зарплата на руки, после налогов (в среднем по России за 2026 год, dreamjob.ru). С налогами и взносами один оператор обходится в <span id="perPerson"></span> в месяц.</p>
       <p class="hint">Операторов в штате больше, чем на смене: неделя 40 часов, а люди болеют, уходят в отпуск, сидят с детьми. Мы подставили, сколько нужно на такой график. Если у вас иначе, поставьте свою цифру. <a href="#" id="auto">Вернуть нашу</a></p>
@@ -605,10 +603,10 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
   <div class="plans">
     <div class="c plan main"><small>Подписка</small><div class="price">15 990 ₽</div><p>В месяц за ресторан. Один номер, одно меню, один стоп-лист, одна зона доставки, один разговор одновременно. Больше - другой тариф, цена по запросу. На 2 года 14 871 ₽ в месяц. Каждый следующий ресторан 15 990 ₽, с 3-го скидка 10 %.</p></div>
     <div class="c plan"><small>Минута разговора</small><div class="price">0,89 ₽</div><p>Вы платите напрямую сервису распознавания: он слышит гостя и озвучивает ответ. Сервис подбираем при подключении, кабинет откроем на ваш ресторан. 40 звонков в день по 5 минут - около 5 410 ₽ в месяц.</p></div>
-    <div class="c plan"><small>Несколько точек, один номер</small><div class="price">+3 990 ₽</div><p>За каждую точку со своей зоной и стоп-листом. 5 точек на одном номере: 31 950 ₽ в месяц.</p><span class="tag">условие обсуждается</span></div>
   </div>
   <div class="tiles four"><div class="t"><b>Без платы за подключение</b><span>Только абонентка</span></div><div class="t"><b>От 1 года</b><span>Минимальный срок подписки</span></div><div class="t"><b>Скидка 7 %</b><span>При подписке на 2 года</span></div><div class="t"><b>1 месяц</b><span>Срок запуска</span></div></div>
   <p class="incl"><b>Входит:</b> подключение к номеру ресторана, загрузка меню, настройка Диспетчера на ваших звонках в первые недели, веб-панель с записью и расшифровкой звонков, обновления, связка с кассой.</p>
+  <p class="incl" style="margin-top:6px"><b>Несколько точек на одном номере:</b> цена согласовывается отдельно.</p>
   <div class="cta"><button class="btn" type="button" id="cta">Связаться</button></div>
 </div></section>
 
@@ -636,7 +634,7 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
     </div>
     <p class="tiny" id="mLoad"></p>
     <button type="button" class="btn act" id="mMore">Уточнить расчёт</button>
-    <p class="tiny">Длительность, часы, смены, точки.</p>
+    <p class="tiny">Длительность, часы, смены.</p>
   </div></div>
   <div class="ms" data-m="pos"><div class="in">
     <h2>Заказ сразу <em>в кассе</em></h2>
@@ -715,7 +713,7 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
       <li>Один оператор в месяц = зарплата на руки / 0,87 × 1,27. 0,87 - НДФЛ 13 %. 1,27 - взносы по льготе малого бизнеса в общепите, около 27 %. Без льготы около 30 %, оператор дороже.</li>
       <li>Минут в месяц = звонки × длительность × 30,4.</li>
       <li>Минута разговора с оператором = расходы на операторов / минуты.</li>
-      <li>Подписка = 15 990 ₽ + 3 990 ₽ × дополнительные точки. Разговоры = минуты × 0,89 ₽.</li>
+      <li>Подписка = 15 990 ₽ в месяц за одну точку. Цена за дополнительные точки согласовывается отдельно. Разговоры = минуты × 0,89 ₽.</li>
       <li>За 2 года скидка 7 % только на подписку.</li>
       <li>Телефония не входит: номер нужен и оператору, и Диспетчеру.</li>
       <li>Считаем полную замену. Если оператор ещё работает на кассе или выдаче, экономия меньше.</li>
@@ -738,7 +736,6 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
   <label>Часов приёма в день<input id="mHours" type="number" min="1" max="24" value="14" inputmode="numeric"></label>
   <label>Операторов на смене<input id="mSeats" type="number" min="1" max="20" value="1" inputmode="numeric"></label>
   <label>Всего в штате<input id="mStaff" type="number" min="1" max="50" inputmode="numeric"></label>
-  <label>Точек доставки<input id="mPoints" type="number" min="1" max="100" value="1" inputmode="numeric"></label>
   <a href="#" class="lnk" id="mHow">Как считали</a>
   <button class="btn" type="button" id="mDone">Готово</button>
 </dialog>
@@ -755,7 +752,7 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
 <template id="i-integ"><h2>Полная интеграция</h2><p>UMA и iiko. Гость договорил - заказ уже в системе ресторана.</p><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Заказ<small>Блюда, адрес, телефон, время, приборы, пометки</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Кухня и курьер<small>Кухня получает чек, курьер - адрес и телефон</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Стоп-лист<small>Обновляется сразу или раз в 15 минут</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Баллы<small>Называет баланс, списание попадает в заказ</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Касса не отвечает<small>Заказ не теряется, всё в веб-панели</small></span></li></ul><p class="tiny">Ссылку на оплату гостю отправляет ресторан, как сейчас.</p></template>
 <template id="i-logic"><h2>Детерминированная логика</h2><p>Бот на нейросети сочиняет ответ на ходу и может придумать то, чего нет. Диспетчер работает по правилам: одна фраза гостя - один проверенный ответ.</p><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Отвечает одинаково<small>Утром и вечером один ответ</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не придумывает<small>Блюда и цены только из ваших данных</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Не ломается<small>С каждым обновлением проверок всё больше</small></span></li></ul><p class="tiny">Распознавание только слышит гостя и озвучивает ответ. Что сказать, решает Диспетчер.</p></template>
 <template id="i-panel"><h2>Что есть в панели</h2><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Разговор онлайн<small>Видно, пока он идёт</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Запись онлайн<small>Можно включить и послушать</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Касса онлайн<small>Видно, что касса на связи</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Принятые заказы<small>Все заказы в одном списке</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Скачать текст<small>Расшифровка каждого звонка</small></span></li></ul></template>
-<template id="i-terms"><h2>Условия подписки</h2><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>От 1 года<small>Минимальный срок</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>На 2 года скидка 7 %<small>14 871 ₽ в месяц, только на подписку</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Несколько точек на одном номере<small>+3 990 ₽ за точку, 5 точек: 31 950 ₽ в месяц. Условие обсуждается</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Следующий ресторан<small>15 990 ₽, с 3-го скидка 10 %</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Больше одного разговора сразу<small>Другой тариф, цена по запросу</small></span></li></ul></template>
+<template id="i-terms"><h2>Условия подписки</h2><ul class="ck"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>От 1 года<small>Минимальный срок</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>На 2 года скидка 7 %<small>14 871 ₽ в месяц, только на подписку</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Несколько точек на одном номере<small>Цена согласовывается отдельно</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Следующий ресторан<small>15 990 ₽, с 3-го скидка 10 %</small></span></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg><span>Больше одного разговора сразу<small>Другой тариф, цена по запросу</small></span></li></ul></template>
 <template id="i-start"><h2>Запуск за 1 месяц</h2><p>За месяц всё настраиваем сами.</p><ol class="ck steps"><li><span>Подключаем точку<small>К вашему номеру и кассе</small></span></li><li><span>Загружаем меню<small>Блюда, цены, стоп-лист</small></span></li><li><span>Обучаем Диспетчера<small>На пробных звонках</small></span></li><li><span>Дальше всё работает<small>Гости звонят, заказы идут в кассу</small></span></li></ol></template>
 
 <dialog id="dlg">
@@ -909,14 +906,14 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
   }
   function calc() {
     var calls = num('calls', 0, 0), dur = num('dur', 0, 0), hours = Math.min(num('hours', 1, 1), 24);
-    var salary = num('salary', 0, 0), points = Math.round(num('points', 1, 1));
+    var salary = num('salary', 0, 0);
     if (document.activeElement !== $('seats')) $('seats').value = seatsNow();
     if (!staffTouched) $('staff').value = autoStaff();
     var people = Math.round(num('staff', 1, autoStaff()));
     var perPerson = salary / 0.87 * 1.27;
     var human = people * perPerson;
     var minutes = calls * dur * 30.4;
-    var sub = 15990 + 3990 * Math.max(points - 1, 0);
+    var sub = 15990;
     var yandex = minutes * 0.89;
     var disp = sub + yandex;
     var saving = human - disp;
@@ -957,7 +954,7 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
       : 'Телефон занят примерно ' + Math.round(conc * 60) + ' мин в час, в вечерний пик больше. Подписка рассчитана на один разговор одновременно, больше - другой тариф.';
   }
   ['calls', 'dur', 'hours'].forEach(function (id) { $(id).addEventListener('input', function () { staffTouched = false; calc(); }); });
-  ['salary', 'points'].forEach(function (id) { $(id).addEventListener('input', calc); });
+  $('salary').addEventListener('input', calc);
   $('seats').addEventListener('input', function () { seatsOwn = Math.round(num('seats', 1, 1)); staffTouched = false; calc(); });
   $('seats').addEventListener('blur', calc);
   $('staff').addEventListener('input', function () { staffTouched = true; calc(); });
@@ -969,7 +966,7 @@ dialog.sheet[open]{display:flex;flex-direction:column;animation:subIn .22s ease}
   $('contact').addEventListener('click', openDlg);
   $('mContact').addEventListener('click', openDlg);
   /* поля телефона зеркалят поля калькулятора */
-  var mirror = {mCalls: 'calls', mSalary: 'salary', mDur: 'dur', mHours: 'hours', mSeats: 'seats', mStaff: 'staff', mPoints: 'points'};
+  var mirror = {mCalls: 'calls', mSalary: 'salary', mDur: 'dur', mHours: 'hours', mSeats: 'seats', mStaff: 'staff'};
   Object.keys(mirror).forEach(function (m) {
     $(m).addEventListener('input', function () {
       var t = $(mirror[m]);
